@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0sxlgxawxoq7"]
+
+[ext_resource type="Script" path="res://Scripts/Obstaculo.gd" id="1_jxpv6"]
+[ext_resource type="Texture2D" uid="uid://s5x2wxfmqlaq" path="res://Sprites/Characters/enemy.svg" id="2_r5rvn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwtq0"]
+size = Vector2(108.573, 89.8518)
+
+[node name="Enemy_box" type="Area2D"]
+position = Vector2(-7.99976, 3.00006)
+scale = Vector2(0.739888, 0.668352)
+script = ExtResource("1_jxpv6")
+speed = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r5rvn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.500001, 1.19209e-07)
+scale = Vector2(1.02976, 1.06198)
+shape = SubResource("RectangleShape2D_fwtq0")
+
+[connection signal="body_entered" from="." to="." method="_on_box_body_entered"]

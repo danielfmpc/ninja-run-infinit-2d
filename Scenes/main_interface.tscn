@@ -1,0 +1,156 @@
+[gd_scene load_steps=22 format=3 uid="uid://c5aisqwxr2tby"]
+
+[ext_resource type="Texture2D" uid="uid://c224jx0qd15dq" path="res://Sprites/Characters/Parado/Idle__000.png" id="1_1kbo6"]
+[ext_resource type="Script" path="res://Scripts/main_interface.gd" id="1_ereqx"]
+[ext_resource type="FontFile" uid="uid://se6rk2e3eq0a" path="res://Font/GILLUBCD.TTF" id="2_pvds4"]
+[ext_resource type="Texture2D" uid="uid://brnxeud0sy2wc" path="res://Sprites/Characters/Parado/Idle__001.png" id="4_g1vry"]
+[ext_resource type="Texture2D" uid="uid://dgnvbgll8iqd5" path="res://Sprites/Characters/Parado/Idle__002.png" id="5_ahsiy"]
+[ext_resource type="Texture2D" uid="uid://c7vnw5ojw278g" path="res://Sprites/Characters/Parado/Idle__003.png" id="6_yqxkc"]
+[ext_resource type="Texture2D" uid="uid://bt6os26kt3xe2" path="res://Sprites/Characters/Parado/Idle__004.png" id="7_ylu1c"]
+[ext_resource type="Texture2D" uid="uid://bfmbsr2ko3jo2" path="res://Sprites/Characters/Parado/Idle__005.png" id="8_4als2"]
+[ext_resource type="Texture2D" uid="uid://do48pauffeglw" path="res://Sprites/Characters/Parado/Idle__006.png" id="9_3mkj1"]
+[ext_resource type="Texture2D" uid="uid://csayfd0ns2yph" path="res://Sprites/Characters/Parado/Idle__007.png" id="10_84k33"]
+[ext_resource type="Texture2D" uid="uid://vbftu2dhy2tu" path="res://Sprites/Characters/Parado/Idle__008.png" id="11_m2j4x"]
+[ext_resource type="Texture2D" uid="uid://b1ly6ilow7kx8" path="res://Sprites/Characters/Parado/Idle__009.png" id="12_xxm2u"]
+[ext_resource type="AudioStream" uid="uid://bec0sjlp5gsti" path="res://Audio/musica.wav" id="13_0oo2t"]
+
+[sub_resource type="FontVariation" id="FontVariation_x46lv"]
+base_font = ExtResource("2_pvds4")
+
+[sub_resource type="Animation" id="Animation_m4hxs"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Player:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_1kbo6"), ExtResource("4_g1vry"), ExtResource("5_ahsiy"), ExtResource("6_yqxkc"), ExtResource("7_ylu1c"), ExtResource("8_4als2"), ExtResource("9_3mkj1"), ExtResource("10_84k33"), ExtResource("11_m2j4x"), ExtResource("12_xxm2u")]
+}
+
+[sub_resource type="Animation" id="Animation_6xeqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Player:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_1kbo6")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xo2tn"]
+_data = {
+"RESET": SubResource("Animation_6xeqv"),
+"idle": SubResource("Animation_m4hxs")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_qc2to"]
+base_font = ExtResource("2_pvds4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3y8qn"]
+bg_color = Color(0.0588235, 0.137255, 0.584314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxey5"]
+bg_color = Color(0.0588235, 0.137255, 0.317647, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_6powm"]
+base_font = ExtResource("2_pvds4")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ereqx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176471, 0.188235, 0.243137, 0.94902)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -186.0
+offset_right = 151.5
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/Title"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_x46lv")
+theme_override_font_sizes/font_size = 40
+text = "NINJA'S RUNNERS"
+
+[node name="Player" type="TextureRect" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_1kbo6")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Player"]
+root_node = NodePath("../../..")
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_xo2tn")
+}
+
+[node name="Button" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Button" type="Button" parent="VBoxContainer/Button"]
+texture_filter = 6
+clip_contents = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_qc2to")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_3y8qn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bxey5")
+text = "START"
+
+[node name="Record" type="Label" parent="VBoxContainer"]
+texture_filter = 6
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_6powm")
+theme_override_font_sizes/font_size = 20
+text = "RECORD: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_0oo2t")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Button/Button" to="." method="_on_button_pressed"]

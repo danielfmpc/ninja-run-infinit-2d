@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://qbxmfbalh6xj"]
+
+[ext_resource type="FontFile" uid="uid://se6rk2e3eq0a" path="res://Font/GILLUBCD.TTF" id="1_rg7r6"]
+[ext_resource type="Script" path="res://Scenes/scores.gd" id="1_tijj4"]
+[ext_resource type="FontFile" uid="uid://cb2v0x6dh6drr" path="res://Font/GILSANUB.TTF" id="3_3qbcy"]
+
+[sub_resource type="FontVariation" id="FontVariation_c5xpd"]
+base_font = ExtResource("1_rg7r6")
+
+[sub_resource type="FontVariation" id="FontVariation_d8w1u"]
+base_font = ExtResource("3_3qbcy")
+
+[sub_resource type="FontVariation" id="FontVariation_yvrl1"]
+base_font = ExtResource("1_rg7r6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxpn8"]
+bg_color = Color(0.0588235, 0.137255, 0.584314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl32x"]
+bg_color = Color(0.0588235, 0.137255, 0.317647, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_op623"]
+base_font = ExtResource("1_rg7r6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4mat"]
+bg_color = Color(0.0588235, 0.827451, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43apw"]
+bg_color = Color(0.0313726, 0.490196, 0.105882, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_tijj4")
+
+[node name="Labe_Score" type="Label" parent="."]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = -303.0
+offset_right = 49.0
+offset_bottom = -262.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.721569, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_c5xpd")
+theme_override_font_sizes/font_size = 40
+text = "SCORE: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameoverContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -57.0
+offset_right = 216.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_GameOver" type="Label" parent="GameoverContainer"]
+texture_filter = 4
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_d8w1u")
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+
+[node name="Reload" type="Button" parent="GameoverContainer"]
+texture_filter = 6
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_yvrl1")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_uxpn8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fl32x")
+text = "Restartar o jogo"
+
+[node name="MainInteface" type="Button" parent="GameoverContainer"]
+texture_filter = 6
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_op623")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4mat")
+theme_override_styles/hover = SubResource("StyleBoxFlat_43apw")
+text = "Menu principal"
+
+[connection signal="pressed" from="GameoverContainer/Reload" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GameoverContainer/MainInteface" to="." method="_on_main_inteface_pressed"]
